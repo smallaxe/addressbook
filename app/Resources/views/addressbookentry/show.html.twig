@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Addressbookentry</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ addressbookEntry.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ addressbookEntry.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ addressbookEntry.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ addressbookEntry.email }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ addressbookEntry.mobile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('addressbookentry_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('addressbookentry_edit', { 'id': addressbookEntry.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

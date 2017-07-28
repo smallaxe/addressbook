@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Addressbookentries list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for addressbookEntry in addressbookEntries %}
+            <tr>
+                <td><a href="{{ path('addressbookentry_show', { 'id': addressbookEntry.id }) }}">{{ addressbookEntry.id }}</a></td>
+                <td>{{ addressbookEntry.firstname }}</td>
+                <td>{{ addressbookEntry.lastname }}</td>
+                <td>{{ addressbookEntry.email }}</td>
+                <td>{{ addressbookEntry.mobile }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('addressbookentry_show', { 'id': addressbookEntry.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('addressbookentry_edit', { 'id': addressbookEntry.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('addressbookentry_new') }}">Create a new addressbookEntry</a>
+        </li>
+    </ul>
+{% endblock %}
